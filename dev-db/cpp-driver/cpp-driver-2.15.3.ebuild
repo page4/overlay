@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="DataStax C/C++ Driver for Cassandra"
 HOMEPAGE="https://datastax.github.io/cpp-driver/"
@@ -17,12 +17,14 @@ IUSE="libressl ssl"
 RDEPEND="
 	dev-libs/libuv:=
 	ssl? (
-		!libressl? ( dev-libs/openssl:= )
-		libressl? ( dev-libs/libressl:= )
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
 	)"
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	local mycmakeargs=( -DCASS_USE_OPENSSL=$(usex ssl) )
-	cmake-utils_src_configure
+	append-cflags "-DOF=_Z_OF"
+	append-cppflags "-DOF=_Z_OF"
+	cmake_src_configure
 }
