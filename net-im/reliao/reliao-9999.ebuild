@@ -9,7 +9,7 @@ HOMEPAGE="https://71.me/get/"
 SLOT="0"
 SRC_URI="https://hotchat-mt.iqiyi.com/version/api/ex/update/linux  -> ${PN}_${PV}_amd64.deb"
 KEYWORDS="amd64"
-IUSE="gnome +fcitx"
+IUSE="gnome"
 
 RESTRICT="mirror"
 #RESTRICT="network-sandbox"
@@ -19,7 +19,6 @@ S=${WORKDIR}
 # TODO:DEPEND not complete
 RDEPEND="
 	gnome? ( >=gnome-base/gconf-2.24.0:= )
-	fcitx? ( app-i18n/fcitx[gtk2] )
 	media-gfx/gnome-screenshot
 	media-video/ffmpeg[chromium]
 	x11-libs/gtk+:3
