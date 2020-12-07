@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit autotools flag-o-matic linux-info python-r1 toolchain-funcs systemd user
 
@@ -21,6 +21,10 @@ KEYWORDS="amd64"
 
 RESTRICT="test"
 
+	#dev-python/pyudev[${PYTHON_USEDEP}]
+	#dev-python/pyyaml[${PYTHON_USEDEP}]
+	#dev-python/requests[${PYTHON_USEDEP}]
+	#dev-python/urwid[${PYTHON_USEDEP}]
 RDEPEND="
 	>=dev-libs/thrift-0.11.0
 	<dev-util/ragel-7.0
@@ -38,10 +42,6 @@ RDEPEND="
 	dev-libs/libxml2
 	dev-libs/protobuf
 	dev-python/pyparsing[${PYTHON_USEDEP}]
-	dev-python/pyudev[${PYTHON_USEDEP}]
-	dev-python/pyyaml[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/urwid[${PYTHON_USEDEP}]
 	dev-util/systemtap
 	net-libs/gnutls
 	net-misc/lksctp-tools
