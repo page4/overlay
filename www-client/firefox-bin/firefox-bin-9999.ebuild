@@ -34,7 +34,7 @@ MOZ_LASTEST_DEV="https://download.mozilla.org/?product=firefox-devedition-latest
 
 #SRC_URI="amd64? ( ${MOZ_SRC_BASE_URI}/linux-x86_64/en-US/${MOZ_P}.tar.bz2 -> ${PN}_x86_64-${PV}.tar.bz2 )
 #	x86? ( ${MOZ_SRC_BASE_URI}/linux-i686/en-US/${MOZ_P}.tar.bz2 -> ${PN}_i686-${PV}.tar.bz2 )"
-SRC_URI="${MOZ_LASTEST_DEV} -> ${PN}_x86_64-${PV}.tar.bz2"
+SRC_URI="${MOZ_LASTEST_BETA} -> ${PN}_x86_64-${PV}.tar.bz2"
 
 DESCRIPTION="Firefox Web Browser"
 HOMEPAGE="https://www.mozilla.com/firefox"
