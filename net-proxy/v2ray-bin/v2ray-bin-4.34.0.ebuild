@@ -9,7 +9,7 @@ inherit systemd
 DESCRIPTION="A platform for building proxies to bypass network restrictions."
 HOMEPAGE="https://www.v2ray.com/"
 SRC_URI="
-https://github.com/v2ray/v2ray-core/releases/download/${MY_PV}/v2ray-linux-64.zip -> ${PF}.zip
+https://github.com/v2fly/v2ray-core/releases/download/${MY_PV}/v2ray-linux-64.zip -> ${PF}.zip
 "
 
 LICENSE="MIT"
@@ -24,10 +24,13 @@ src_install() {
 
 	insinto /etc/v2ray
 	doins *.json
+
+	insinto /usr/share/${PN}
 	doins geoip.dat geosite.dat
 
-	sed 's;/v2ray/v2ray ;/v2ray ;' -i systemd/v2ray.service
-	systemd_dounit systemd/v2ray.service
+	sed -i "s|/usr/local/bin|env v2ray.location.asset=/usr/share/${PN} /usr/bin|;s|/usr/local/etc|/etc|" systemd/system/*.service
+	systemd_dounit systemd/system/v2ray.service
+	systemd_dounit systemd/system/v2ray@.service
 }
 
 pkg_postinst() {
