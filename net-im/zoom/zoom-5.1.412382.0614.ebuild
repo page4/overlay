@@ -15,7 +15,7 @@ SRC_URI="x86? ( ${BASE_URI/-arch-/i386} -> ${MY_PN}-${PV}_i386.deb )
 
 LICENSE="ZOOM"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 ~x86"
 IUSE="pulseaudio"
 RESTRICT="bindist mirror"
 
